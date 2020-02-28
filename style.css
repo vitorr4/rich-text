@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+iframe#text-box {
+    margin-left: 130pt;
+    margin-top: 20pt;
+    border: 1px solid #606060;
+    width: 1000px; 
+    height: 500px;
+    background-color: #ffffff;
+}
+
+div#header {
+    background-color: darkseagreen;
+    margin-top: 0pt;
+}
+
+body {
+    margin-top: 0pt;
+    margin-left: 0pt;
+    background-color: beige;
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rich text editor in JS</title>
+        <script src="https://kit.fontawesome.com/b9c64e5385.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body onLoad="enableEditMode();">
+        <div id="header">
+            <button onClick="execCmd('bold');"><i class="fa fa-bold"></i></button>
+            <button onClick="execCmd('italic');"><i class="fa fa-italic"></i></button>
+            <button onClick="execCmd('underline');"><i class="fa fa-underline"></i></button>
+            <button onClick="execCmd('strikeThrough');"><i class="fa fa-strikethrough"></i></button>
+            <button onClick="execCmd('justifyLeft');"><i class="fa fa-align-left"></i></button>
+            <button onClick="execCmd('justifyCenter');"><i class="fa fa-align-center"></i></button>
+            <button onClick="execCmd('justifyRight');"><i class="fa fa-align-right"></i></button>
+            <button onClick="execCmd('justifyFull');"><i class="fa fa-align-justify"></i></button>
+            <button onClick="execCmd('cut');"><i class="fa fa-cut"></i></button>
+            <button onClick="execCmd('copy');"><i class="fa fa-copy"></i></button>
+            <button onClick="execCmd('indent');"><i class="fa fa-indent"></i></button>
+            <button onClick="execCmd('outdent');"><i class="fa fa-dedent"></i></button>
+            <button onClick="execCmd('subscript');"><i class="fa fa-subscript"></i></button>
+            <button onClick="execCmd('superscript');"><i class="fa fa-superscript"></i></button>
+            <button onClick="execCmd('undo');"><i class="fa fa-undo"></i></button>
+            <button onClick="execCmd('redo');"><i class="fa fa-repeat"></i></button>
+            <button onClick="execCmd('insertUnorderedList');"><i class="fa fa-list-ul"></i></button>
+            <button onClick="execCmd('insertOrderedList');"><i class="fa fa-list-ol"></i></button>
+            <button onClick="execCmd('insertParagraph');"><i class="fa fa-paragraph"></i></button>
+            <select onClick="execCommandWihtArg('formatBlock', this.value);">
+                <option value="H1">H1</option>
+                <option value="H2">H2</option>
+                <option value="H3">H3</option>
+                <option value="H4">H4</option>
+                <option value="H5">H5</option>
+                <option value="H6">H6</option>
+            </select>
+            <button onClick="execCmd('insertHorizontalRule');">HR</button>
+            <button onClick="execCommandWihtArg('createLink', prompt('Enter a URL', 'http//:'));"><i class="fa fa-link"></i></button>
+            <button onClick="execCmd('unlink');"><i class="fa fa-unlink"></i></button>
+            <button onClick="toggleSource();"><i class="fa fa-code"></i></button>
+            <br/>
+            <select onChange="execCommandWihtArg('fontName', this.value);">
+                <option value="Arial">Arial</option>
+                <option value="Comic Sans MS">Comic Sans MS</option>
+                <option value="Courier">Courier</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Tahoma">Tahoma</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Verdana">Verdana</option>
+            </select>
+            <select onChange="execCommandWihtArg('fontSize', this.value);">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+            </select>
+            Fore Color: <input type="color" onChange="execCommandWihtArg('foreColor', this.value);"/>
+            Background: <input type="color" onChange="execCommandWihtArg('hiliteColor', this.value);"/>
+            <button onClick="execCommandWihtArg('insertImage', prompt('Enter the image URL', ''));"><i class="far fa-image"></i></button>
+            <button onClick="execCmd('selectAll');">Select All</i></button>
+        </div>
+        <iframe name="richTextField" id="text-box"></iframe>
+        <script type="text/javascript">
+
+            var showingSourceCode = false;
+
+            function enableEditMode () {
+                richTextField.document.designMode = 'On';
+            }
+
+            function execCmd (command) {
+               richTextField.document.execCommand(command, false, null); 
+            }
+
+            function execCommandWihtArg (command, arg) {
+                richTextField.document.execCommand(command, false, arg); 
+            }
+
+            function toggleSource () {
+                if(showingSourceCode) {
+                    richTextField.document.getElementsByTagName('body')[0].innerHTML = richTextField.document.getElementsByTagName('body')[0].textContent;
+                    showingSourceCode = false;
+                }else {
+                    richTextField.document.getElementsByTagName('body')[0].innerHTML = richTextField.document.getElementsByTagName('body')[0].innerHTML;
+                    showingSourceCode = true;
+                }
+            }  
+        </script>
+    </body>
+</html>
