@@ -57,9 +57,11 @@
                 <option value="6">6</option>
                 <option value="7">7</option>
             </select>
-            Fore Color: <input type="color" onChange="execCommandWihtArg('foreColor', this.value);"/>
-            Background: <input type="color" onChange="execCommandWihtArg('hiliteColor', this.value);"/>
-            <button onClick="execCommandWihtArg('insertImage', prompt('Enter the image URL', ''));"><i class="far fa-image"></i></button>
+            <p>Fore Color:</p> <input type="color" onChange="execCommandWihtArg('foreColor', this.value);"/>
+            <p>Background:</p> <input type="color" onChange="execCommandWihtArg('hiliteColor', this.value);"/>
+            <!-- <button onClick="execCommandWihtArg('insertImage', prompt('Enter the image URL', ''));"><i class="far fa-image"></i></button> -->
+            <button onclick="execCommandWihtArg('insertImage', document.getElementById('file-input').click());"><i class="far fa-image"></i></button>
+            <input id="file-input" type="file" name="name" style="display: none;" />
             <button onClick="execCmd('selectAll');">Select All</i></button>
         </div>
         <iframe name="richTextField" id="text-box"></iframe>
@@ -87,6 +89,11 @@
                     richTextField.document.getElementsByTagName('body')[0].innerHTML = richTextField.document.getElementsByTagName('body')[0].innerHTML;
                     showingSourceCode = true;
                 }
+            }
+
+            function browseResult(e){
+                var fileselector = document.getElementById('fileselector');
+                console.log(fileselector.value);
             }  
         </script>
     </body>

@@ -7,15 +7,30 @@ iframe#text-box {
     width: 1000px; 
     height: 500px;
     background-color: #ffffff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 div#header {
     background-color: darkseagreen;
     margin-top: 0pt;
+    width: 1366px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 body {
     margin-top: 0pt;
     margin-left: 0pt;
     background-color: beige;
+}
+
+button {
+    background-color: gray;
+    color: rgb(241, 241, 252);
+    border: 1px solid gray;
+}
+
+p {
+    display: inline;
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
 }
